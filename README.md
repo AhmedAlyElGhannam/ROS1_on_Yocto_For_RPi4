@@ -220,7 +220,7 @@ Then, follow the steps:
 ## Results
 
 See for yourself :D
-![](README_Photos/pi.webm)
+![](README_Photos/pi.mp4)
 
 You can use `connmanctl` to connect to wifi. To do so, follow the steps:
    ```
