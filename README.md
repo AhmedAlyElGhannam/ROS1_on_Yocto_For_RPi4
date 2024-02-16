@@ -3,7 +3,7 @@
 ## Introduction
 
 ### Author's Note
-This README file is a step-by-step tutorial on how to add and use ROS on a Yocto image for Raspberry Pi 4. In the process of research, I have found that the "official" `meta-ros` layer is depricated, full of bugs, and most importantly has no support for the latest LTS version of The Yocto Project: Kirkstone---at the time of writing this (2/2024). So, here I will document the entire process of building it: starting from cloning `poky` and `openembedded` to running `roscore` one the Pi.
+This README file is a step-by-step tutorial on how to add and use ROS on a Yocto image for Raspberry Pi 4. In the process of research, I have found that the "official" `meta-ros` layer is depricated, full of bugs, and most importantly has no support for the latest LTS version of The Yocto Project: Kirkstone---at the time of writing this (2/2024). So, here I will document the entire process of building it: starting from cloning `poky` and `openembedded` to running `roscore` on the Pi.
 
 ## Target Hardware Specifications
 As stated earlier, the target hardware is a Raspberry Pi 4 8GB Rev 1.5C with the following pin configuration. Knowing the pin configuration will be important later on in order to communicate with the Pi later on via a serial terminal like `gtkterm` using a USB-to-TTL device as shown below.
