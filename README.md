@@ -220,7 +220,8 @@ Then, follow the steps:
 ## Results
 
 See for yourself :D
-![](README_Photos/pi.mp4)
+<video src='https://drive.google.com/file/d/1F4cWxg6rROAiOgnBDKcx-GpmZmVb2Cm3/view?usp=drive_link' width=180/>
+
 
 You can use `connmanctl` to connect to wifi. To do so, follow the steps:
    ```
