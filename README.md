@@ -7,12 +7,12 @@ This README file is a step-by-step tutorial on how to add and use ROS on a Yocto
 
 ## Target Hardware Specifications
 As stated earlier, the target hardware is a Raspberry Pi 4 8GB Rev 1.5C with the following pin configuration. Knowing the pin configuration will be important later on in order to communicate with the Pi later on via a serial terminal like `gtkterm` using a USB-to-TTL device as shown below.
-_pi photo_
-_ttl photo_
+![](README_Photos/rpi4.png)
+![](README_Photos/usb2ttl.jpg)
 
 ## Build Device Specifications
 I have built this Yocto image on a PC with the specifications stated below. I made sure to record the time it took me to build the image for reference. Bare in mind that performance may differ duo to multiple reasons such as: temperature---a laptop is more likely to throttle than a PC; disk speed---I built it entirely on an SSD and it took over 2 hours, I can hardly imagine how long it would take to build an image on an HDD; and lastly the performance of your machine---I am running a native/real Ubuntu 22.04 machine, not a VM.
-_pc drip_
+![](README_Photos/drip.png)
 
 With all the exposition out of the way, let us begin.
 
@@ -47,7 +47,7 @@ With all the exposition out of the way, let us begin.
    https://github.com/agherzan/meta-raspberrypi.git
    ```
 
-1. Finally, it is time to clone the star of the show: `meta-ros`. As stated earlier, the "official"---as in the one you can find in Openembedded Layer Index---is deprecated and full of bugs; so I will not use it. Luckily, RethinkRobotics-opensource forked a repository that was forked from a fork of the original `meta-ros` that is up-to-date and fully functional. Huge shoutout to them. For now, I will simply clone their repository.
+1. Finally, it is time to clone the star of the show: `meta-ros`. As stated earlier, the "official"---as in the one you can find in Openembedded Layer Index---is deprecated and full of bugs; so I will not use it. Luckily, [RethinkRobotics-opensource](https://github.com/RethinkRobotics-opensource) forked a repository that was forked from a fork of the original `meta-ros` that is up-to-date and fully functional. Huge shoutout to them. For now, I will simply clone their repository.
    ```
    https://github.com/RethinkRobotics-opensource/meta-ros.git
    ```
@@ -58,9 +58,9 @@ With all the exposition out of the way, let us begin.
 As of the time this tutorial is written, the latest LTS version of The Yocto Project is Kirkstone. So, I will be using that. Make sure to checkout the correct branch in each of the layers we had cloned.
 
   1. To see which branch you are currently on:
-    ```
-    git status
-    ```
+     ```
+     git status
+     ```
   1. To view all the branches available in said repository:
      ```
      git branch -a
@@ -167,7 +167,7 @@ Now, all that remains is to run a single command and leave your machine to build
 
 My PC took just over 3 hours to complete it as shown below.
 
-_add time_
+![](README_Photos/build_time.png)
 
 
 ## Burn The Image
