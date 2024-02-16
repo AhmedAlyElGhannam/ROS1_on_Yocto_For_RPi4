@@ -202,6 +202,53 @@ Then, follow the steps:
    ```
 
 
+## Testing the Yocto Image
+
+1. Insert the SD card into the Pi.
+1. Connect the Pi to USB-to-TTL as follows:
+   1. GND --> GND
+   1. Tx  --> Rx
+   1. Rx  --> Tx
+1. Connect USB-to-TTL to the PC via USB.
+1. Launch `gtkterm` using the following command:
+   ```
+   gtkterm -p /dev/ttyUSB0 -s 115200
+   ```
+1. Power on the Pi. You should see the starting screen on `gtkterm`.
+
+
 ## Results
 
-1. 
+See for yourself :D
+![](pi.mp4)
+
+You can use `connmanctl` to connect to wifi. To do so, follow the steps:
+   ```
+   connmanctl
+   ```
+
+   ```
+   enable wifi
+   ```
+
+   ```
+   agent on
+   ```
+
+   ```
+   scan wifi
+   ```
+
+   ```
+   connect wifi_LOTS_OF_GIBBIRISH_managed_psk
+   ```
+
+   ```
+   WIFI_PASSWORD
+   ```
+
+   ```
+   quit
+   ```
+
+_That's all, folks!_
