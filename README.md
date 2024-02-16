@@ -112,51 +112,51 @@ As of the time this tutorial is written, the latest LTS version of The Yocto Pro
    gedit local.conf
    ```
    
-### Essential Additions
+   ### Essential Additions
 
-Comment any line that specifies a certain `MACHINE` and add this one:
-  ```
-  ## Machine Name: MUST INCLUDE
-  MACHINE = "raspberrypi4-64"
-  ```
+      Comment any line that specifies a certain `MACHINE` and add this one:
+      ```
+      ## Machine Name: MUST INCLUDE
+      MACHINE = "raspberrypi4-64"
+      ```
+      
+      UART must be enabled in order to be able to communicate with the Pi using serial terminal.
+      ```
+      ENABLE_UART = "1"
+      ``` 
+      
+      Expanding the size of root filesystem can be beneficial. I have set mine to 5GB since I used a 64GB SD card.
+      ```
+      ## Extend Root Filesystem Size to 5GB (size written in bytes)
+      IMAGE_ROOTFS_EXTRA_SPACE = "5242880"
+      ```
 
-UART must be enabled in order to be able to communicate with the Pi using serial terminal.
-  ```
-  ENABLE_UART = "1"
-  ```
-
-Expanding the size of root filesystem can be beneficial. I have set mine to 5GB since I used a 64GB SD card.
-  ```
-  ## Extend Root Filesystem Size to 5GB (size written in bytes)
-  IMAGE_ROOTFS_EXTRA_SPACE = "5242880"
-  ```
-
-### Optional Additions
-
-  1. You can add certain applications to your image via the command `IMAGE_INSTALL:append`. Make sure to add ones that do not need you to create a recipe to fetch and install them. Here, I added `connman-client`, `htop`, and `nano`. Bro Tip: [gotocto](https://www.yoctoproject.net/#) is an online tool that helps you create a recipe.
-     ```
-     ## Additional Packages
-    IMAGE_INSTALL:append = " htop"
-    IMAGE_INSTALL:append = " nano"
-    IMAGE_INSTALL:append = " connman-client"
-     ```
-
-  1. There are multiple options that range from enabling communication protocols like UART, SPI, and I2C; to enabling support for a CAN module and a camera. In order to explore all of these options, feel free to explore the [meta-raspberrypi Official Documentation.](https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html)
-
-  1. You can add extra software features like SSH using the command `EXTRA_IMAGE_FEATURES`. I enabled SSH and added features like package management---although I could not get it to work yet, it is worth including for now.
-     ```
-     ## Features like SSH
-     ENABLE_SSH_SERVER = "1"
-     EXTRA_IMAGE_FEATURES ?= "debug-tweaks ssh-server-openssh package-management"
-     ```
-
-  1. Another feature that I could not get to work is making `bash` the default shell in the yocto image. I will add the lines used to enable this feature and hopefully update them when I succeed.
-     ```
-     ## Change Default Shell to Bash
-     INITSCRIPT_NAME = "bash"
-     BB_ENV_PASSTHROUGH_ADDITIONS = "SHELL"
-     SHELL = "/bin/bash"
-     ```
+   ### Optional Additions
+   
+     1. You can add certain applications to your image via the command `IMAGE_INSTALL:append`. Make sure to add ones that do not need you to create a recipe to fetch and install them. Here, I added `connman-client`, `htop`, and `nano`. Bro Tip: [gotocto](https://www.yoctoproject.net/#) is an online tool that helps you create a recipe.
+        ```
+        ## Additional Packages
+        IMAGE_INSTALL:append = " htop"
+        IMAGE_INSTALL:append = " nano"
+        IMAGE_INSTALL:append = " connman-client"
+        ```
+   
+     1. There are multiple options that range from enabling communication protocols like UART, SPI, and I2C; to enabling support for a CAN module and a camera. In order to explore all of these options, feel free to explore the [meta-raspberrypi Official Documentation.](https://meta-raspberrypi.readthedocs.io/en/latest/extra-build-config.html)
+   
+     1. You can add extra software features like SSH using the command `EXTRA_IMAGE_FEATURES`. I enabled SSH and added features like package management---although I could not get it to work yet, it is worth including for now.
+        ```
+        ## Features like SSH
+        ENABLE_SSH_SERVER = "1"
+        EXTRA_IMAGE_FEATURES ?= "debug-tweaks ssh-server-openssh package-management"
+        ```
+   
+     1. Another feature that I could not get to work is making `bash` the default shell in the yocto image. I will add the lines used to enable this feature and hopefully update them when I succeed.
+        ```
+        ## Change Default Shell to Bash
+        INITSCRIPT_NAME = "bash"
+        BB_ENV_PASSTHROUGH_ADDITIONS = "SHELL"
+        SHELL = "/bin/bash"
+        ```
 
 ## Building the Yocto Image
 
